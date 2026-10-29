@@ -1,0 +1,8 @@
+node_modules
+dist
+.vercel
+.DS_Store
+*.log
+
+# Imagens originais (pesadas); as otimizadas ficam em public/images
+originais/

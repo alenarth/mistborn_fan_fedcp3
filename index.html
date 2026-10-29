@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nascidos da Bruma · Site de fã de Mistborn</title>
+    <meta name="description" content="Site de fã sobre Mistborn (Nascidos da Bruma), de Brandon Sanderson: personagens, Alomancia, mapa e curiosidades." />
+    <meta name="theme-color" content="#0b0a09" />
+
+    <!-- Ícones (gerados por scripts/gerar-icones.js) e manifesto -->
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Prévia ao compartilhar o link (Open Graph) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content="Nascidos da Bruma" />
+    <meta property="og:title" content="Nascidos da Bruma · Site de fã de Mistborn" />
+    <meta property="og:description" content="Site de fã sobre Mistborn (Nascidos da Bruma), de Brandon Sanderson: personagens, Alomancia, mapa e curiosidades." />
+    <meta property="og:image" content="/icon-512.png" />
+
+    <!-- Fontes do Google: Cinzel (títulos) e Crimson Pro (texto) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+
+    <!-- A imagem do hero começa a baixar antes, porque aparece logo de cara -->
+    <link rel="preload" as="image" href="/images/luthadel-panorama.webp" fetchpriority="high" />
+
+    <!-- Estilos (Tailwind + tema) e script principal -->
+    <link rel="stylesheet" href="/src/styles/main.css" />
+    <script type="module" src="/src/main.js"></script>
+  </head>
+
+  <body data-pagina="inicio">
+    <!-- Header injetado pelo JS (src/components/header.js) -->
+    <div id="site-header" class="h-16"></div>
+
+    <main id="conteudo" class="flex-1">
+      <!-- ===== HERO: Luthadel na bruma =====
+           -mt-16 puxa o hero para baixo do header, que fica transparente no topo -->
+      <section data-heroi class="relative -mt-16 flex min-h-svh items-end overflow-hidden">
+        <img
+          src="/images/luthadel-panorama.webp"
+          width="2000"
+          height="851"
+          alt="Telhados e torres de Luthadel cobertos pela bruma à noite, com uma figura de capa saltando entre os prédios"
+          class="heroi__imagem absolute inset-0 h-full w-full object-cover object-[30%_center]"
+          fetchpriority="high"
+        />
+
+        <!-- Três camadas de névoa, cada uma numa velocidade (CSS: .bruma__camada) -->
+        <div class="bruma" aria-hidden="true">
+          <div class="bruma__camada bruma__camada--fundo"><div class="bruma__nevoa"></div></div>
+          <div class="bruma__camada bruma__camada--meio"><div class="bruma__nevoa"></div></div>
+          <div class="bruma__camada bruma__camada--frente"><div class="bruma__nevoa"></div></div>
+        </div>
+
+        <div class="heroi__sombra" aria-hidden="true"></div>
+
+        <!-- Cinzas caindo (src/js/cinzas.js) -->
+        <canvas id="cinzas" class="cinzas" aria-hidden="true"></canvas>
+
+        <div class="heroi__conteudo relative z-10 mx-auto w-full max-w-7xl px-4 pb-16 pr-14 sm:px-8 sm:pr-24 md:pb-24">
+          <!-- Marca principal: símbolo oficial ao lado do título (em cima, no celular) -->
+          <div class="flex flex-col items-start gap-5 md:flex-row md:items-end md:gap-10">
+            <img
+              src="/images/simbolo-oficial.svg"
+              width="176"
+              height="176"
+              alt=""
+              class="heroi__simbolo h-20 w-20 sm:h-28 sm:w-28 md:h-44 md:w-44"
+            />
+            <h1 class="heroi__titulo titulo-metal font-bold">Nascidos<br />da Bruma</h1>
+          </div>
+          <p class="mt-6 max-w-xl text-xl leading-snug text-bruma sm:text-2xl">
+            O sol é vermelho, as cinzas não param de cair e o Senhor Soberano reina há mil anos. Até esta noite.
+          </p>
+        </div>
+
+        <a href="#trilogia" class="indicador-rolagem absolute bottom-8 right-4 z-10 sm:right-8" aria-label="Rolar até a trilogia">
+          <span aria-hidden="true">Role</span>
+          <span class="indicador-rolagem__linha" aria-hidden="true"></span>
+        </a>
+      </section>
+
+      <!-- ===== A TRILOGIA: três blocos alternados ===== -->
+      <section id="trilogia" aria-labelledby="titulo-trilogia" class="scroll-mt-16 py-24 md:py-36">
+        <!-- Cabeçalho assimétrico: título grande à esquerda, texto curto à direita -->
+        <div class="mx-auto grid max-w-7xl gap-6 px-4 sm:px-8 md:grid-cols-12 md:items-end">
+          <h2 id="titulo-trilogia" data-revelar class="titulo-secao titulo-metal font-bold md:col-span-7">A trilogia</h2>
+          <p data-revelar style="--atraso: 150ms" class="text-lg text-cinza-400 md:col-span-4 md:col-start-9">
+            Brandon Sanderson publicou a primeira era de Mistborn entre 2006 e 2008: três livros sobre um grupo de
+            rebeldes contra um governante que se diz imortal. Os resumos abaixo evitam grandes revelações.
+          </p>
+        </div>
+
+        <!-- Lista ordenada: a ordem de leitura importa -->
+        <ol class="mt-20 space-y-24 md:mt-32 md:space-y-40">
+          <!-- Livro I: arte à esquerda -->
+          <li>
+            <article class="livro" aria-labelledby="livro-1">
+              <div class="livro__arte cantos" data-revelar="mascara">
+                <img
+                  src="/images/vin-moedas.webp"
+                  width="1000"
+                  height="1519"
+                  loading="lazy"
+                  alt="Vin, com sua capa de bruma esvoaçando, empurra moedas de cobre pelo ar enquanto cinzas caem entre as torres"
+                  class="h-full w-full object-cover object-[50%_30%]"
+                />
+                <div class="vinheta" aria-hidden="true"></div>
+              </div>
+
+              <div class="livro__texto" data-revelar>
+                <span class="livro__numero" aria-hidden="true">I</span>
+                <p class="flex items-center gap-3 text-estanho">
+                  <span class="simbolo h-7 w-7" style="--simbolo: url('/images/simbolo-estanho.webp')" aria-hidden="true"></span>
+                  <span class="italic">Livro um, 2006</span>
+                </p>
+                <h3 id="livro-1" class="mt-4 text-4xl text-bruma sm:text-5xl">O Império Final</h3>
+                <p class="livro__chamada mt-6">Um golpe impossível contra um deus que caminha entre os homens.</p>
+                <p class="mt-5 max-w-lg text-lg text-bruma/85">
+                  Há mil anos o Senhor Soberano governa o Império Final, e os skaa vivem como escravos sob um céu de
+                  cinzas. Em Luthadel, Vin, uma jovem que sobrevive nas ruas, descobre ser uma Nascida da Bruma e é
+                  recrutada pela equipe de Kelsier para derrubar o império.
+                </p>
+              </div>
+            </article>
+          </li>
+
+          <!-- Livro II: arte à direita (capa do Poço da Ascensão) -->
+          <li>
+            <article class="livro livro--invertido" aria-labelledby="livro-2">
+              <div class="livro__arte cantos" data-revelar="mascara">
+                <img
+                  src="/images/capa-poco-da-ascensao.webp"
+                  width="812"
+                  height="1106"
+                  loading="lazy"
+                  alt="Capa de O Poço da Ascensão: Vin, de preto e faixa roxa, enfrenta no ar um Inquisidor de Aço entre torres e relâmpagos"
+                  class="h-full w-full object-cover object-[60%_40%]"
+                />
+                <div class="vinheta" aria-hidden="true"></div>
+              </div>
+
+              <div class="livro__texto" data-revelar>
+                <span class="livro__numero" aria-hidden="true">II</span>
+                <p class="flex items-center gap-3 text-estanho">
+                  <span class="simbolo h-7 w-7" style="--simbolo: url('/images/simbolo-cravos.webp')" aria-hidden="true"></span>
+                  <span class="italic">Livro dois, 2007</span>
+                </p>
+                <h3 id="livro-2" class="mt-4 text-4xl text-bruma sm:text-5xl">O Poço da Ascensão</h3>
+                <p class="livro__chamada mt-6">Derrubar um império é uma coisa. Governar o que sobra dele é outra.</p>
+                <p class="mt-5 max-w-lg text-lg text-bruma/85">
+                  Depois dos acontecimentos do primeiro livro, Vin e Elend precisam manter Luthadel de pé enquanto
+                  exércitos cercam a cidade. Ao mesmo tempo, as brumas começam a agir de um jeito estranho, e uma lenda
+                  antiga volta a ganhar importância.
+                </p>
+              </div>
+            </article>
+          </li>
+
+          <!-- Livro III: arte à esquerda -->
+          <li>
+            <article class="livro" aria-labelledby="livro-3">
+              <div class="livro__arte cantos" data-revelar="mascara">
+                <img
+                  src="/images/julgamento-tenson.webp"
+                  width="2000"
+                  height="2969"
+                  loading="lazy"
+                  alt="Uma multidão reunida numa enorme caverna iluminada de azul assiste a um julgamento no centro de um círculo de luz"
+                  class="h-full w-full object-cover object-[50%_60%]"
+                />
+                <div class="vinheta" aria-hidden="true"></div>
+              </div>
+
+              <div class="livro__texto" data-revelar>
+                <span class="livro__numero" aria-hidden="true">III</span>
+                <p class="flex items-center gap-3 text-estanho">
+                  <span class="simbolo h-7 w-7" style="--simbolo: url('/images/simbolo-estanho.webp')" aria-hidden="true"></span>
+                  <span class="italic">Livro três, 2008</span>
+                </p>
+                <h3 id="livro-3" class="mt-4 text-4xl text-bruma sm:text-5xl">O Herói das Eras</h3>
+                <p class="livro__chamada mt-6">Quando o próprio mundo parece querer acabar, toda pista importa.</p>
+                <p class="mt-5 max-w-lg text-lg text-bruma/85">
+                  As cinzas caem cada vez mais grossas e as brumas avançam. Vin e seus aliados correm contra o tempo para
+                  entender as pistas deixadas pelo passado e descobrir se ainda existe alguma esperança.
+                </p>
+              </div>
+            </article>
+          </li>
+        </ol>
+      </section>
+
+      <!-- ===== FAIXA: o salão de baile (nobreza x skaa) ===== -->
+      <section aria-label="A nobreza e os skaa" class="relative flex min-h-[80svh] items-center overflow-hidden">
+        <img
+          src="/images/salao-baile.webp"
+          width="2000"
+          height="1125"
+          loading="lazy"
+          alt="Salão de baile de uma fortaleza nobre, com vitrais coloridos enormes, colunas escuras e casais dançando"
+          class="absolute inset-0 h-full w-full object-cover object-[70%_center]"
+        />
+        <div class="bruma" aria-hidden="true">
+          <div class="bruma__camada bruma__camada--frente"><div class="bruma__nevoa"></div></div>
+        </div>
+        <div class="faixa__sombra" aria-hidden="true"></div>
+
+        <div class="relative z-10 mx-auto w-full max-w-7xl px-4 py-24 sm:px-8">
+          <p data-revelar class="max-w-3xl text-4xl italic leading-tight text-bruma sm:text-5xl lg:text-6xl">
+            Lá dentro, vitrais, seda e música até o amanhecer.
+            <span class="mt-4 block text-latao-claro">Lá fora, os skaa trabalham sob as cinzas.</span>
+          </p>
+          <p data-revelar style="--atraso: 200ms" class="mt-8 flex items-center gap-4 text-lg text-estanho">
+            <span class="h-px w-12 bg-latao" aria-hidden="true"></span>
+            Os bailes da nobreza em Luthadel
+          </p>
+        </div>
+      </section>
+
+      <!-- ===== EXPLORE: menu visual com tamanhos diferentes ===== -->
+      <section aria-labelledby="titulo-explorar" class="relative overflow-hidden py-24 md:py-36">
+        <!-- Roda de símbolos alomânticos girando bem devagar ao fundo -->
+        <span
+          class="simbolo girar-lento pointer-events-none absolute -right-48 -top-24 h-[34rem] w-[34rem] opacity-[0.07] md:h-[44rem] md:w-[44rem]"
+          style="--simbolo: url('/images/tabela-alomantica.webp')"
+          aria-hidden="true"
+        ></span>
+
+        <div class="relative mx-auto max-w-7xl px-4 sm:px-8">
+          <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+            <h2 id="titulo-explorar" data-revelar class="text-4xl text-latao-claro sm:text-5xl">Para onde a bruma leva</h2>
+            <p data-revelar style="--atraso: 150ms" class="max-w-sm text-lg text-cinza-400">
+              Escolha um caminho. As outras páginas ainda estão sendo forjadas, mas já têm seu lugar aqui.
+            </p>
+          </div>
+
+          <ul class="portais mt-12">
+            <li class="portais__personagens" data-revelar>
+              <a href="/personagens.html" class="portal cantos">
+                <img
+                  src="/images/equipe-kelsier.webp"
+                  width="724"
+                  height="1024"
+                  loading="lazy"
+                  alt=""
+                  class="object-[50%_40%]"
+                />
+                <span class="simbolo portal__simbolo" style="--simbolo: url('/images/simbolo-cravos.webp')" aria-hidden="true"></span>
+                <h3 class="portal__titulo text-4xl sm:text-5xl">Personagens</h3>
+                <span class="portal__linha" aria-hidden="true"></span>
+                <p class="max-w-md text-lg text-bruma/85">Vin, Kelsier, Elend, Sazed e todos que cruzaram o caminho da equipe.</p>
+              </a>
+            </li>
+
+            <li class="portais__mapa" data-revelar style="--atraso: 100ms">
+              <a href="/mapa.html" class="portal cantos">
+                <img src="/images/mapa-1200.webp" width="1200" height="906" loading="lazy" alt="" class="object-[55%_45%]" />
+                <h3 class="portal__titulo text-3xl">Mapa</h3>
+                <span class="portal__linha" aria-hidden="true"></span>
+                <p class="text-bruma/85">De Luthadel às montanhas de cinza do Império Final.</p>
+              </a>
+            </li>
+
+            <li class="portais__alomancia" data-revelar style="--atraso: 200ms">
+              <a href="/alomancia.html" class="portal cantos">
+                <img src="/images/nascido-linhas-aco.webp" width="1158" height="2000" loading="lazy" alt="" class="object-[50%_30%]" />
+                <span class="simbolo portal__simbolo" style="--simbolo: url('/images/simbolo-estanho.webp')" aria-hidden="true"></span>
+                <h3 class="portal__titulo text-2xl">Alomancia</h3>
+                <span class="portal__linha" aria-hidden="true"></span>
+                <p class="text-bruma/85">O poder de queimar metais.</p>
+              </a>
+            </li>
+
+            <li class="portais__curiosidades" data-revelar style="--atraso: 300ms">
+              <a href="/curiosidades.html" class="portal cantos">
+                <img src="/images/vin-e-wax.webp" width="1920" height="1661" loading="lazy" alt="" class="object-[35%_30%]" />
+                <h3 class="portal__titulo text-2xl">Curiosidades</h3>
+                <span class="portal__linha" aria-hidden="true"></span>
+                <p class="text-bruma/85">Bastidores, autor e o que veio depois.</p>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer injetado pelo JS (src/components/footer.js) -->
+    <div id="site-footer"></div>
+  </body>
+</html>

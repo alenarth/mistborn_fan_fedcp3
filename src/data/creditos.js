@@ -1,0 +1,133 @@
+// Créditos de todas as artes do site (usados na página creditos.html)
+// "arquivo": nome em public/images (sem .webp); "simbolo": desenho mostrado com mask, sem miniatura
+export const creditos = [
+  {
+    arquivo: 'luthadel-panorama',
+    titulo: 'Luthadel na bruma',
+    artista: 'Robin Lukas (robinlukasart)',
+    uso: 'Fundo do hero da página inicial',
+  },
+  {
+    arquivo: 'vin-moedas',
+    titulo: 'Vin empurrando moedas',
+    artista: 'Artista não identificado',
+    uso: 'Trilogia: O Império Final',
+  },
+  {
+    arquivo: 'capa-poco-da-ascensao',
+    titulo: 'Capa de The Well of Ascension (Tor Books)',
+    artista: 'Chris McGrath',
+    uso: 'Trilogia: O Poço da Ascensão',
+  },
+  {
+    arquivo: 'julgamento-tenson',
+    titulo: 'O julgamento de TenSoon',
+    artista: 'Marc Antoni Mestre',
+    uso: 'Trilogia: O Herói das Eras',
+  },
+  {
+    arquivo: 'salao-baile',
+    titulo: 'Salão de baile da Fortaleza Venture',
+    artista: 'Johanna Rupprecht (lyraina.com)',
+    uso: 'Faixa sobre a nobreza e os skaa',
+  },
+  {
+    arquivo: 'equipe-kelsier',
+    titulo: 'Vin e a equipe',
+    artista: 'Assinatura “Marcosar” (a confirmar)',
+    uso: 'Menu Explore: Personagens',
+  },
+  {
+    arquivo: 'mapa',
+    titulo: 'Mapa do Império Final',
+    artista: 'Autor não identificado',
+    uso: 'Menu Explore: Mapa',
+  },
+  {
+    arquivo: 'nascido-linhas-aco',
+    titulo: 'Nascido da Bruma entre as linhas de aço',
+    artista: 'Adam (misteradam.com)',
+    uso: 'Menu Explore: Alomancia',
+  },
+  {
+    arquivo: 'vin-e-wax',
+    titulo: 'Vin e Wax: passado e presente',
+    artista: 'Nia Kovalevski (Cosmere RPG)',
+    uso: 'Menu Explore: Curiosidades',
+  },
+  {
+    arquivo: 'fortaleza-venture',
+    titulo: 'Diante da Fortaleza Venture',
+    artista: 'Johanna Rupprecht (lyraina.com)',
+    uso: 'Topo desta página',
+  },
+  {
+    arquivo: 'vin-vitral',
+    titulo: 'Vin diante do vitral',
+    artista: 'Mistborn Campaign Setting, Cosmere RPG (artista não indicado)',
+    uso: 'Reservada para a página de personagens',
+  },
+  {
+    arquivo: 'kelsier-telhado',
+    titulo: 'Kelsier sobre o muro',
+    artista: 'Mistborn Campaign Setting, Cosmere RPG (artista não indicado)',
+    uso: 'Reservada para a página de personagens',
+  },
+  {
+    arquivo: 'vin-sol-vermelho',
+    titulo: 'Vin sob o sol vermelho',
+    artista: 'Assinatura ilegível (“dealuren”?)',
+    uso: 'Reservada para a página de personagens',
+  },
+  {
+    arquivo: 'nascido-janela',
+    titulo: 'Nascido da Bruma na janela',
+    artista: 'Artur Mosca',
+    uso: 'Reservada para a página de Alomancia',
+  },
+  {
+    arquivo: 'kelsier-vin-bruma',
+    titulo: 'Kelsier e Vin na bruma',
+    artista: 'Mistborn: The Deckbuilding Game (artista não indicado)',
+    uso: 'Reservada para a página de Alomancia',
+  },
+  {
+    arquivo: 'ministerio-aco',
+    titulo: 'O Ministério do Aço',
+    artista: 'Huu Ha (Mistborn Campaign Setting)',
+    uso: 'Reservada para a página de personagens',
+  },
+  {
+    arquivo: 'inquisidor-machado',
+    titulo: 'Inquisidor de Aço',
+    artista: 'Assinatura “Donovan” (2012)',
+    uso: 'Reservada para a página de personagens',
+  },
+  {
+    arquivo: 'inquisidor-retrato',
+    titulo: 'Retrato de um Inquisidor',
+    artista: 'Artista não identificado',
+    uso: 'Reservada para a página de personagens',
+  },
+  {
+    arquivo: 'tabela-alomantica',
+    titulo: 'Tabela dos símbolos alomânticos',
+    artista: 'Símbolos criados por Isaac Stewart (Dragonsteel)',
+    uso: 'Decoração da página inicial',
+    simbolo: true,
+  },
+  {
+    arquivo: 'simbolo-estanho',
+    titulo: 'Símbolo do Estanho',
+    artista: 'Isaac Stewart (Dragonsteel)',
+    uso: 'Decoração',
+    simbolo: true,
+  },
+  {
+    arquivo: 'simbolo-cravos',
+    titulo: 'Símbolo alomântico com cravos',
+    artista: 'Isaac Stewart (Dragonsteel)',
+    uso: 'Decoração',
+    simbolo: true,
+  },
+];

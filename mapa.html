@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mapa · Nascidos da Bruma</title>
+    <meta name="description" content="Mapa interativo do Império Final, de Mistborn (Nascidos da Bruma): Luthadel, Fadrex, Urteau, Tathingdwen e os montes de cinzas. Site de fã." />
+    <meta name="theme-color" content="#0b0a09" />
+
+    <!-- Ícones (gerados por scripts/gerar-icones.js) e manifesto -->
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Prévia ao compartilhar o link (Open Graph) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content="Nascidos da Bruma" />
+    <meta property="og:title" content="Mapa · Nascidos da Bruma" />
+    <meta property="og:description" content="Mapa interativo do Império Final, de Mistborn (Nascidos da Bruma): Luthadel, Fadrex, Urteau, Tathingdwen e os montes de cinzas. Site de fã." />
+    <meta property="og:image" content="/icon-512.png" />
+
+    <!-- Fontes do Google: Cinzel (títulos) e Crimson Pro (texto) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+
+    <!-- Estilos, script principal e o script do mapa -->
+    <link rel="stylesheet" href="/src/styles/main.css" />
+    <script type="module" src="/src/main.js"></script>
+    <script type="module" src="/src/js/pagina-mapa.js"></script>
+  </head>
+
+  <body data-pagina="mapa">
+    <!-- Header injetado pelo JS (src/components/header.js) -->
+    <div id="site-header" class="h-16"></div>
+
+    <main id="conteudo" class="flex-1">
+      <section id="mapa" class="mapa" aria-labelledby="titulo-mapa">
+        <!-- Cópia desfocada do mapa: preenche as laterais quando a tela é mais larga que o mapa -->
+        <img src="/images/mapa-1200.webp" width="1200" height="906" alt="" class="mapa__fundo" />
+
+        <!-- Área do mapa. O "palco" tem o mesmo aspect-ratio da imagem; imagem e pontos dão zoom juntos -->
+        <div id="mapa-area" class="mapa__area">
+          <div id="mapa-palco" class="mapa__palco">
+            <img
+              src="/images/mapa-2400.webp"
+              srcset="/images/mapa-1200.webp 1200w, /images/mapa-2400.webp 2400w, /images/mapa-4096.webp 4096w"
+              sizes="(min-width: 768px) calc((100vh - 4rem) * 1.3234), 100vw"
+              width="4096"
+              height="3095"
+              alt="Mapa ilustrado do Império Final: um continente de terras alaranjadas cercado pelo mar, com montanhas ao norte, rios, lagos e montes de cinzas fumegando"
+              class="mapa__imagem"
+              fetchpriority="high"
+              draggable="false"
+            />
+            <!-- Marcadores criados pelo JS a partir de src/data/locais.js -->
+            <ul id="mapa-marcadores" class="mapa__marcadores" aria-label="Locais do mapa"></ul>
+          </div>
+        </div>
+
+        <!-- Vinheta e névoa só nas bordas (não bloqueiam o clique) -->
+        <div class="mapa__vinheta" aria-hidden="true"></div>
+        <div class="bruma bruma--bordas" aria-hidden="true">
+          <div class="bruma__camada bruma__camada--fundo"><div class="bruma__nevoa"></div></div>
+          <div class="bruma__camada bruma__camada--frente"><div class="bruma__nevoa"></div></div>
+        </div>
+
+        <div class="mapa__titulo">
+          <h1 id="titulo-mapa" class="titulo-metal text-4xl font-bold sm:text-5xl lg:text-6xl">O Império Final</h1>
+          <p class="mt-2 max-w-xs text-lg text-bruma/90">Escolha um ponto no mapa para conhecer o lugar.</p>
+        </div>
+
+        <p class="mapa__credito">Mapa: autor não identificado · <a href="/creditos.html" class="link-latao">créditos</a></p>
+
+        <!-- ===== PAINEL DO LOCAL =====
+             Desktop: desliza da direita. Celular: sobe de baixo (bottom sheet).
+             Fechado, fica com visibility: hidden (some também para teclado e leitor de tela) -->
+        <aside id="painel" class="painel" role="dialog" aria-modal="false" aria-labelledby="painel-nome">
+          <button id="painel-fechar" type="button" class="painel__fechar" aria-label="Fechar painel">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+              <path d="M6 6l12 12M18 6L6 18" />
+            </svg>
+          </button>
+
+          <div class="painel__rolagem">
+            <!-- Arte do local (quando houver) ou um símbolo no lugar -->
+            <div class="painel__figura">
+              <img id="painel-imagem" class="painel__imagem" alt="" hidden />
+              <div id="painel-sem-imagem" class="painel__sem-imagem" hidden>
+                <span class="simbolo h-20 w-20 opacity-30" style="--simbolo: url('/images/tabela-alomantica.webp')" aria-hidden="true"></span>
+              </div>
+            </div>
+
+            <div class="px-6 pb-6 pt-5 md:px-8">
+              <p id="painel-tipo" class="italic text-estanho"></p>
+              <h2 id="painel-nome" class="mt-1 text-3xl text-latao-claro outline-none md:text-4xl" tabindex="-1"></h2>
+              <p id="painel-descricao" class="mt-4 text-lg text-bruma/90"></p>
+
+              <div id="painel-livros" class="mt-6">
+                <h3 class="text-sm tracking-widest text-cinza-400">Destaque nos livros</h3>
+                <ul id="painel-lista-livros" class="mt-3 flex flex-wrap gap-2"></ul>
+              </div>
+            </div>
+          </div>
+
+          <nav class="painel__navegacao" aria-label="Navegar entre os locais">
+            <button id="painel-anterior" type="button" class="painel__passo">
+              <span class="text-sm text-cinza-400">← Anterior</span>
+              <span id="nome-anterior" class="font-titulo text-latao-claro"></span>
+            </button>
+            <span id="painel-contador" class="self-center text-sm text-cinza-500"></span>
+            <button id="painel-proximo" type="button" class="painel__passo items-end text-right">
+              <span class="text-sm text-cinza-400">Próximo →</span>
+              <span id="nome-proximo" class="font-titulo text-latao-claro"></span>
+            </button>
+          </nav>
+
+          <!-- Anuncia a troca de local para leitores de tela -->
+          <p id="painel-anuncio" class="sr-only" aria-live="polite"></p>
+        </aside>
+      </section>
+    </main>
+
+    <!-- Footer injetado pelo JS (src/components/footer.js) -->
+    <div id="site-footer"></div>
+  </body>
+</html>

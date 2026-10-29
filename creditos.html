@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Créditos das artes · Nascidos da Bruma</title>
+    <meta name="description" content="Créditos das artes usadas no site de fã Nascidos da Bruma, sobre Mistborn de Brandon Sanderson." />
+    <meta name="theme-color" content="#0b0a09" />
+
+    <!-- Ícones (gerados por scripts/gerar-icones.js) e manifesto -->
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Prévia ao compartilhar o link (Open Graph) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content="Nascidos da Bruma" />
+    <meta property="og:title" content="Créditos das artes · Nascidos da Bruma" />
+    <meta property="og:description" content="Créditos das artes usadas no site de fã Nascidos da Bruma, sobre Mistborn de Brandon Sanderson." />
+    <meta property="og:image" content="/icon-512.png" />
+
+    <!-- Fontes do Google: Cinzel (títulos) e Crimson Pro (texto) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+
+    <!-- Estilos, script principal e o script que monta a lista de créditos -->
+    <link rel="stylesheet" href="/src/styles/main.css" />
+    <script type="module" src="/src/main.js"></script>
+    <script type="module" src="/src/js/pagina-creditos.js"></script>
+  </head>
+
+  <body data-pagina="creditos">
+    <!-- Header injetado pelo JS (src/components/header.js) -->
+    <div id="site-header" class="h-16"></div>
+
+    <main id="conteudo" class="flex-1">
+      <!-- Topo com arte, névoa e título alinhado à esquerda -->
+      <section class="relative flex min-h-[55svh] items-end overflow-hidden">
+        <img
+          src="/images/fortaleza-venture.webp"
+          width="2000"
+          height="1049"
+          alt="Uma figura de capa agachada no alto de um prédio observa os vitrais iluminados de uma fortaleza envolta em bruma"
+          class="absolute inset-0 h-full w-full object-cover object-[75%_center]"
+        />
+        <div class="bruma" aria-hidden="true">
+          <div class="bruma__camada bruma__camada--frente"><div class="bruma__nevoa"></div></div>
+        </div>
+        <div class="heroi__sombra" aria-hidden="true"></div>
+
+        <div class="relative z-10 mx-auto w-full max-w-7xl px-4 pb-12 sm:px-8">
+          <h1 class="titulo-secao titulo-metal font-bold">Créditos<br />das artes</h1>
+        </div>
+      </section>
+
+      <section class="mx-auto max-w-7xl px-4 py-16 sm:px-8 md:py-24">
+        <div class="grid gap-6 md:grid-cols-12">
+          <p class="text-xl text-bruma md:col-span-7">
+            Todas as imagens deste site pertencem aos seus autores e foram usadas apenas para fins educacionais, em um
+            trabalho acadêmico de front-end, sem fins lucrativos.
+          </p>
+          <p class="text-lg text-cinza-400 md:col-span-4 md:col-start-9">
+            Quando o nome do artista não aparecia no arquivo nem na assinatura, ele está marcado como “não identificado”.
+            Correções são bem-vindas.
+          </p>
+        </div>
+
+        <!-- Lista montada pelo JS (src/js/pagina-creditos.js). O gap de 1px com fundo de latão
+             desenha linhas finas entre os itens, como o chumbo de um vitral -->
+        <ol id="lista-creditos" class="mt-14 grid gap-px border border-latao/20 bg-latao/20 md:grid-cols-2"></ol>
+      </section>
+    </main>
+
+    <!-- Footer injetado pelo JS (src/components/footer.js) -->
+    <div id="site-footer"></div>
+  </body>
+</html>
